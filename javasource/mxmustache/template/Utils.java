@@ -17,9 +17,6 @@ import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.codec.digest.DigestUtils;
-
-import com.google.common.base.Preconditions;
 import com.mendix.core.Core;
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.systemwideinterfaces.core.IDataType;
@@ -91,11 +88,6 @@ public class Utils {
         return args.entrySet().iterator().next().getValue();
     }
 
-    public static String getMD5Hash(String jsonString)
-            throws UnsupportedEncodingException {
-        return DigestUtils.md5Hex(jsonString.getBytes(Utils.UTF8));
-    }
-
     public static boolean isValidKey(String key) {
         return key != null && !key.trim().isEmpty() && key.length() > 0 && key.length() < 400; //MWE: warn: magic number!
     }
@@ -151,16 +143,6 @@ public class Utils {
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public static String appendParamToUrl(String url, String paramName,
-                                          String paramValue) {
-        return url + (url.contains("?") ? "&" : "?") + urlEncode(paramName) + "=" + urlEncode(paramValue);
-    }
-
-    public static String appendSlashToUrl(String url) {
-        Preconditions.checkNotNull(url, "URL should not be null");
-        return url.endsWith("/") ? url : url + "/";
     }
 
     public static String removeTrailingSlash(String relativeUrl) {

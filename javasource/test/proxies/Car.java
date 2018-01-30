@@ -4,9 +4,6 @@
 
 package test.proxies;
 
-/**
- * 
- */
 public class Car
 {
 	private final com.mendix.systemwideinterfaces.core.IMendixObject carMendixObject;
@@ -26,7 +23,6 @@ public class Car
 		CarId("CarId"),
 		Brand("Brand"),
 		Model("Model"),
-		Doors("Doors"),
 		Price("Price"),
 		HasTurbo("HasTurbo"),
 		DateIntroduction("DateIntroduction"),
@@ -129,7 +125,7 @@ public class Car
 	/**
 	 * @return value of CarId
 	 */
-	public final Long getCarId()
+	public final java.lang.Long getCarId()
 	{
 		return getCarId(getContext());
 	}
@@ -138,16 +134,16 @@ public class Car
 	 * @param context
 	 * @return value of CarId
 	 */
-	public final Long getCarId(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Long getCarId(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Long) getMendixObject().getValue(context, MemberNames.CarId.toString());
+		return (java.lang.Long) getMendixObject().getValue(context, MemberNames.CarId.toString());
 	}
 
 	/**
 	 * Set value of CarId
 	 * @param carid
 	 */
-	public final void setCarId(Long carid)
+	public final void setCarId(java.lang.Long carid)
 	{
 		setCarId(getContext(), carid);
 	}
@@ -157,7 +153,7 @@ public class Car
 	 * @param context
 	 * @param carid
 	 */
-	public final void setCarId(com.mendix.systemwideinterfaces.core.IContext context, Long carid)
+	public final void setCarId(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Long carid)
 	{
 		getMendixObject().setValue(context, MemberNames.CarId.toString(), carid);
 	}
@@ -165,7 +161,7 @@ public class Car
 	/**
 	 * @return value of Brand
 	 */
-	public final String getBrand()
+	public final java.lang.String getBrand()
 	{
 		return getBrand(getContext());
 	}
@@ -174,16 +170,16 @@ public class Car
 	 * @param context
 	 * @return value of Brand
 	 */
-	public final String getBrand(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getBrand(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.Brand.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.Brand.toString());
 	}
 
 	/**
 	 * Set value of Brand
 	 * @param brand
 	 */
-	public final void setBrand(String brand)
+	public final void setBrand(java.lang.String brand)
 	{
 		setBrand(getContext(), brand);
 	}
@@ -193,7 +189,7 @@ public class Car
 	 * @param context
 	 * @param brand
 	 */
-	public final void setBrand(com.mendix.systemwideinterfaces.core.IContext context, String brand)
+	public final void setBrand(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String brand)
 	{
 		getMendixObject().setValue(context, MemberNames.Brand.toString(), brand);
 	}
@@ -201,7 +197,7 @@ public class Car
 	/**
 	 * @return value of Model
 	 */
-	public final String getModel()
+	public final java.lang.String getModel()
 	{
 		return getModel(getContext());
 	}
@@ -210,16 +206,16 @@ public class Car
 	 * @param context
 	 * @return value of Model
 	 */
-	public final String getModel(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getModel(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.Model.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.Model.toString());
 	}
 
 	/**
 	 * Set value of Model
 	 * @param model
 	 */
-	public final void setModel(String model)
+	public final void setModel(java.lang.String model)
 	{
 		setModel(getContext(), model);
 	}
@@ -229,45 +225,9 @@ public class Car
 	 * @param context
 	 * @param model
 	 */
-	public final void setModel(com.mendix.systemwideinterfaces.core.IContext context, String model)
+	public final void setModel(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String model)
 	{
 		getMendixObject().setValue(context, MemberNames.Model.toString(), model);
-	}
-
-	/**
-	 * @return value of Doors
-	 */
-	public final Integer getDoors()
-	{
-		return getDoors(getContext());
-	}
-
-	/**
-	 * @param context
-	 * @return value of Doors
-	 */
-	public final Integer getDoors(com.mendix.systemwideinterfaces.core.IContext context)
-	{
-		return (Integer) getMendixObject().getValue(context, MemberNames.Doors.toString());
-	}
-
-	/**
-	 * Set value of Doors
-	 * @param doors
-	 */
-	public final void setDoors(Integer doors)
-	{
-		setDoors(getContext(), doors);
-	}
-
-	/**
-	 * Set value of Doors
-	 * @param context
-	 * @param doors
-	 */
-	public final void setDoors(com.mendix.systemwideinterfaces.core.IContext context, Integer doors)
-	{
-		getMendixObject().setValue(context, MemberNames.Doors.toString(), doors);
 	}
 
 	/**
@@ -309,7 +269,7 @@ public class Car
 	/**
 	 * @return value of HasTurbo
 	 */
-	public final Boolean getHasTurbo()
+	public final java.lang.Boolean getHasTurbo()
 	{
 		return getHasTurbo(getContext());
 	}
@@ -318,16 +278,16 @@ public class Car
 	 * @param context
 	 * @return value of HasTurbo
 	 */
-	public final Boolean getHasTurbo(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Boolean getHasTurbo(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Boolean) getMendixObject().getValue(context, MemberNames.HasTurbo.toString());
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.HasTurbo.toString());
 	}
 
 	/**
 	 * Set value of HasTurbo
 	 * @param hasturbo
 	 */
-	public final void setHasTurbo(Boolean hasturbo)
+	public final void setHasTurbo(java.lang.Boolean hasturbo)
 	{
 		setHasTurbo(getContext(), hasturbo);
 	}
@@ -337,7 +297,7 @@ public class Car
 	 * @param context
 	 * @param hasturbo
 	 */
-	public final void setHasTurbo(com.mendix.systemwideinterfaces.core.IContext context, Boolean hasturbo)
+	public final void setHasTurbo(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean hasturbo)
 	{
 		getMendixObject().setValue(context, MemberNames.HasTurbo.toString(), hasturbo);
 	}

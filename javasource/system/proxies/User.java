@@ -4,9 +4,6 @@
 
 package system.proxies;
 
-/**
- * 
- */
 public class User
 {
 	private final com.mendix.systemwideinterfaces.core.IMendixObject userMendixObject;
@@ -80,9 +77,6 @@ public class User
 	 */
 	public static system.proxies.User initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
-		if (com.mendix.core.Core.isSubClassOf("Administration.Account", mendixObject.getType()))
-			return administration.proxies.Account.initialize(context, mendixObject);
-
 		return new system.proxies.User(context, mendixObject);
 	}
 
@@ -92,7 +86,7 @@ public class User
 		return system.proxies.User.initialize(context, mendixObject);
 	}
 
-	public static java.util.List<? extends system.proxies.User> load(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String xpathConstraint) throws com.mendix.core.CoreException
+	public static java.util.List<system.proxies.User> load(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String xpathConstraint) throws com.mendix.core.CoreException
 	{
 		java.util.List<system.proxies.User> result = new java.util.ArrayList<system.proxies.User>();
 		for (com.mendix.systemwideinterfaces.core.IMendixObject obj : com.mendix.core.Core.retrieveXPathQuery(context, "//System.User" + xpathConstraint))
@@ -134,7 +128,7 @@ public class User
 	/**
 	 * @return value of Name
 	 */
-	public final String getName()
+	public final java.lang.String getName()
 	{
 		return getName(getContext());
 	}
@@ -143,16 +137,16 @@ public class User
 	 * @param context
 	 * @return value of Name
 	 */
-	public final String getName(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getName(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.Name.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.Name.toString());
 	}
 
 	/**
 	 * Set value of Name
 	 * @param name
 	 */
-	public final void setName(String name)
+	public final void setName(java.lang.String name)
 	{
 		setName(getContext(), name);
 	}
@@ -162,7 +156,7 @@ public class User
 	 * @param context
 	 * @param name
 	 */
-	public final void setName(com.mendix.systemwideinterfaces.core.IContext context, String name)
+	public final void setName(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String name)
 	{
 		getMendixObject().setValue(context, MemberNames.Name.toString(), name);
 	}
@@ -171,7 +165,7 @@ public class User
 	 * Set value of Password
 	 * @param password
 	 */
-	public final void setPassword(String password)
+	public final void setPassword(java.lang.String password)
 	{
 		setPassword(getContext(), password);
 	}
@@ -181,7 +175,7 @@ public class User
 	 * @param context
 	 * @param password
 	 */
-	public final void setPassword(com.mendix.systemwideinterfaces.core.IContext context, String password)
+	public final void setPassword(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String password)
 	{
 		getMendixObject().setValue(context, MemberNames.Password.toString(), password);
 	}
@@ -225,7 +219,7 @@ public class User
 	/**
 	 * @return value of Blocked
 	 */
-	public final Boolean getBlocked()
+	public final java.lang.Boolean getBlocked()
 	{
 		return getBlocked(getContext());
 	}
@@ -234,16 +228,16 @@ public class User
 	 * @param context
 	 * @return value of Blocked
 	 */
-	public final Boolean getBlocked(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Boolean getBlocked(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Boolean) getMendixObject().getValue(context, MemberNames.Blocked.toString());
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.Blocked.toString());
 	}
 
 	/**
 	 * Set value of Blocked
 	 * @param blocked
 	 */
-	public final void setBlocked(Boolean blocked)
+	public final void setBlocked(java.lang.Boolean blocked)
 	{
 		setBlocked(getContext(), blocked);
 	}
@@ -253,7 +247,7 @@ public class User
 	 * @param context
 	 * @param blocked
 	 */
-	public final void setBlocked(com.mendix.systemwideinterfaces.core.IContext context, Boolean blocked)
+	public final void setBlocked(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean blocked)
 	{
 		getMendixObject().setValue(context, MemberNames.Blocked.toString(), blocked);
 	}
@@ -261,7 +255,7 @@ public class User
 	/**
 	 * @return value of Active
 	 */
-	public final Boolean getActive()
+	public final java.lang.Boolean getActive()
 	{
 		return getActive(getContext());
 	}
@@ -270,16 +264,16 @@ public class User
 	 * @param context
 	 * @return value of Active
 	 */
-	public final Boolean getActive(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Boolean getActive(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Boolean) getMendixObject().getValue(context, MemberNames.Active.toString());
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.Active.toString());
 	}
 
 	/**
 	 * Set value of Active
 	 * @param active
 	 */
-	public final void setActive(Boolean active)
+	public final void setActive(java.lang.Boolean active)
 	{
 		setActive(getContext(), active);
 	}
@@ -289,7 +283,7 @@ public class User
 	 * @param context
 	 * @param active
 	 */
-	public final void setActive(com.mendix.systemwideinterfaces.core.IContext context, Boolean active)
+	public final void setActive(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean active)
 	{
 		getMendixObject().setValue(context, MemberNames.Active.toString(), active);
 	}
@@ -297,7 +291,7 @@ public class User
 	/**
 	 * @return value of FailedLogins
 	 */
-	public final Integer getFailedLogins()
+	public final java.lang.Integer getFailedLogins()
 	{
 		return getFailedLogins(getContext());
 	}
@@ -306,16 +300,16 @@ public class User
 	 * @param context
 	 * @return value of FailedLogins
 	 */
-	public final Integer getFailedLogins(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Integer getFailedLogins(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Integer) getMendixObject().getValue(context, MemberNames.FailedLogins.toString());
+		return (java.lang.Integer) getMendixObject().getValue(context, MemberNames.FailedLogins.toString());
 	}
 
 	/**
 	 * Set value of FailedLogins
 	 * @param failedlogins
 	 */
-	public final void setFailedLogins(Integer failedlogins)
+	public final void setFailedLogins(java.lang.Integer failedlogins)
 	{
 		setFailedLogins(getContext(), failedlogins);
 	}
@@ -325,7 +319,7 @@ public class User
 	 * @param context
 	 * @param failedlogins
 	 */
-	public final void setFailedLogins(com.mendix.systemwideinterfaces.core.IContext context, Integer failedlogins)
+	public final void setFailedLogins(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Integer failedlogins)
 	{
 		getMendixObject().setValue(context, MemberNames.FailedLogins.toString(), failedlogins);
 	}
@@ -333,7 +327,7 @@ public class User
 	/**
 	 * @return value of WebServiceUser
 	 */
-	public final Boolean getWebServiceUser()
+	public final java.lang.Boolean getWebServiceUser()
 	{
 		return getWebServiceUser(getContext());
 	}
@@ -342,16 +336,16 @@ public class User
 	 * @param context
 	 * @return value of WebServiceUser
 	 */
-	public final Boolean getWebServiceUser(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Boolean getWebServiceUser(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Boolean) getMendixObject().getValue(context, MemberNames.WebServiceUser.toString());
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.WebServiceUser.toString());
 	}
 
 	/**
 	 * Set value of WebServiceUser
 	 * @param webserviceuser
 	 */
-	public final void setWebServiceUser(Boolean webserviceuser)
+	public final void setWebServiceUser(java.lang.Boolean webserviceuser)
 	{
 		setWebServiceUser(getContext(), webserviceuser);
 	}
@@ -361,7 +355,7 @@ public class User
 	 * @param context
 	 * @param webserviceuser
 	 */
-	public final void setWebServiceUser(com.mendix.systemwideinterfaces.core.IContext context, Boolean webserviceuser)
+	public final void setWebServiceUser(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean webserviceuser)
 	{
 		getMendixObject().setValue(context, MemberNames.WebServiceUser.toString(), webserviceuser);
 	}
@@ -369,7 +363,7 @@ public class User
 	/**
 	 * @return value of IsAnonymous
 	 */
-	public final Boolean getIsAnonymous()
+	public final java.lang.Boolean getIsAnonymous()
 	{
 		return getIsAnonymous(getContext());
 	}
@@ -378,16 +372,16 @@ public class User
 	 * @param context
 	 * @return value of IsAnonymous
 	 */
-	public final Boolean getIsAnonymous(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Boolean getIsAnonymous(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Boolean) getMendixObject().getValue(context, MemberNames.IsAnonymous.toString());
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.IsAnonymous.toString());
 	}
 
 	/**
 	 * Set value of IsAnonymous
 	 * @param isanonymous
 	 */
-	public final void setIsAnonymous(Boolean isanonymous)
+	public final void setIsAnonymous(java.lang.Boolean isanonymous)
 	{
 		setIsAnonymous(getContext(), isanonymous);
 	}
@@ -397,7 +391,7 @@ public class User
 	 * @param context
 	 * @param isanonymous
 	 */
-	public final void setIsAnonymous(com.mendix.systemwideinterfaces.core.IContext context, Boolean isanonymous)
+	public final void setIsAnonymous(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean isanonymous)
 	{
 		getMendixObject().setValue(context, MemberNames.IsAnonymous.toString(), isanonymous);
 	}

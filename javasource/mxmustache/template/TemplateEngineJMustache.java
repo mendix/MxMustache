@@ -4,8 +4,6 @@ import com.mendix.core.Core;
 import com.mendix.logging.ILogNode;
 import com.samskivert.mustache.Mustache;
 import com.samskivert.mustache.Template;
-import org.pegdown.Extensions;
-import org.pegdown.PegDownProcessor;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -21,7 +19,7 @@ public class TemplateEngineJMustache {
     private static ILogNode logger = Core.getLogger(TemplateEngineJMustache.class.getName());
     public static final String UTF8 = "UTF-8";
 
-    public String execute(String template, Object data, Boolean runMarkdown) throws IOException {
+    public String execute(String template, Object data) throws IOException {
         logger.info("template: " + template);
         logger.info("templateData: " + data);
         Template tmpl = Mustache.compiler().
@@ -56,16 +54,6 @@ public class TemplateEngineJMustache {
                 }).
                 nullValue("<null>").
                 compile(template);
-        String resultMd = tmpl.execute(data);
-        String result = null;
-        // run through pegdown for markdown to html conversion
-        if (runMarkdown) {
-            PegDownProcessor pegdown = new PegDownProcessor(Extensions.ALL);
-            String resultHtml = pegdown.markdownToHtml(resultMd);
-            result = resultHtml;
-        } else {
-            result = resultMd;
-        }
-        return result;
+        return tmpl.execute(data);
     }
 }

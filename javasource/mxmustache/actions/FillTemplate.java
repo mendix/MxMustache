@@ -17,27 +17,22 @@ import com.mendix.systemwideinterfaces.core.IMendixObject;
 import mxmustache.template.MxObjectToHashmapConverter;
 import mxmustache.template.TemplateEngineJMustache;
 
-/**
- * 
- */
-public class FillTemplate extends CustomJavaAction<String>
+public class FillTemplate extends CustomJavaAction<java.lang.String>
 {
-	private String Template;
+	private java.lang.String Template;
 	private IMendixObject Data;
-	private Boolean RunMarkdown;
-	private Long NoObjectLevels;
+	private java.lang.Long NoObjectLevels;
 
-	public FillTemplate(IContext context, String Template, IMendixObject Data, Boolean RunMarkdown, Long NoObjectLevels)
+	public FillTemplate(IContext context, java.lang.String Template, IMendixObject Data, java.lang.Long NoObjectLevels)
 	{
 		super(context);
 		this.Template = Template;
 		this.Data = Data;
-		this.RunMarkdown = RunMarkdown;
 		this.NoObjectLevels = NoObjectLevels;
 	}
 
 	@Override
-	public String executeAction() throws Exception
+	public java.lang.String executeAction() throws Exception
 	{
 		// BEGIN USER CODE
         ILogNode logger = Core.getLogger(FillTemplate.class.getName());
@@ -45,7 +40,7 @@ public class FillTemplate extends CustomJavaAction<String>
         TemplateEngineJMustache te = new TemplateEngineJMustache();
         Object o = MxObjectToHashmapConverter.writeMxObjectToHashMap(this.getContext(), this.Data, NoObjectLevels.intValue());
         logger.info("data: " + o);
-        String result = te.execute(this.Template, o, this.RunMarkdown);
+        String result = te.execute(this.Template, o);
         return result;
 		// END USER CODE
 	}
@@ -54,7 +49,7 @@ public class FillTemplate extends CustomJavaAction<String>
 	 * Returns a string representation of this action
 	 */
 	@Override
-	public String toString()
+	public java.lang.String toString()
 	{
 		return "FillTemplate";
 	}

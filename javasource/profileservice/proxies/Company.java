@@ -4,9 +4,6 @@
 
 package profileservice.proxies;
 
-/**
- * 
- */
 public class Company
 {
 	private final com.mendix.systemwideinterfaces.core.IMendixObject companyMendixObject;
@@ -114,7 +111,7 @@ public class Company
 	/**
 	 * @return value of CompanyId
 	 */
-	public final String getCompanyId()
+	public final java.lang.String getCompanyId()
 	{
 		return getCompanyId(getContext());
 	}
@@ -123,16 +120,16 @@ public class Company
 	 * @param context
 	 * @return value of CompanyId
 	 */
-	public final String getCompanyId(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getCompanyId(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.CompanyId.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.CompanyId.toString());
 	}
 
 	/**
 	 * Set value of CompanyId
 	 * @param companyid
 	 */
-	public final void setCompanyId(String companyid)
+	public final void setCompanyId(java.lang.String companyid)
 	{
 		setCompanyId(getContext(), companyid);
 	}
@@ -142,7 +139,7 @@ public class Company
 	 * @param context
 	 * @param companyid
 	 */
-	public final void setCompanyId(com.mendix.systemwideinterfaces.core.IContext context, String companyid)
+	public final void setCompanyId(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String companyid)
 	{
 		getMendixObject().setValue(context, MemberNames.CompanyId.toString(), companyid);
 	}
@@ -150,7 +147,7 @@ public class Company
 	/**
 	 * @return value of CompanyName
 	 */
-	public final String getCompanyName()
+	public final java.lang.String getCompanyName()
 	{
 		return getCompanyName(getContext());
 	}
@@ -159,16 +156,16 @@ public class Company
 	 * @param context
 	 * @return value of CompanyName
 	 */
-	public final String getCompanyName(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getCompanyName(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.CompanyName.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.CompanyName.toString());
 	}
 
 	/**
 	 * Set value of CompanyName
 	 * @param companyname
 	 */
-	public final void setCompanyName(String companyname)
+	public final void setCompanyName(java.lang.String companyname)
 	{
 		setCompanyName(getContext(), companyname);
 	}
@@ -178,7 +175,7 @@ public class Company
 	 * @param context
 	 * @param companyname
 	 */
-	public final void setCompanyName(com.mendix.systemwideinterfaces.core.IContext context, String companyname)
+	public final void setCompanyName(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String companyname)
 	{
 		getMendixObject().setValue(context, MemberNames.CompanyName.toString(), companyname);
 	}

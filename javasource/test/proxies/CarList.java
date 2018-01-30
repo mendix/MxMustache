@@ -4,9 +4,6 @@
 
 package test.proxies;
 
-/**
- * 
- */
 public class CarList
 {
 	private final com.mendix.systemwideinterfaces.core.IMendixObject carListMendixObject;

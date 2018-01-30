@@ -26,6 +26,7 @@ import com.mendix.logging.ILogNode;
 import com.mendix.logging.LogSubscriber;
 import com.mendix.m2ee.api.IMxRuntimeRequest;
 import com.mendix.systemwideinterfaces.MendixException;
+import com.mendix.systemwideinterfaces.MendixRuntimeException;
 import com.mendix.systemwideinterfaces.IWebserviceResponse;
 import com.mendix.systemwideinterfaces.connectionbus.data.IDataTable;
 import com.mendix.systemwideinterfaces.connectionbus.requests.IMetaAssociationSchema;
@@ -58,7 +59,11 @@ public final class Core
 		component = localComponent;
 		integration = i;
 	}
-	
+
+	/**
+        * @deprecated Will be removed in next major release.
+        */
+        @Deprecated
 	public static LocalComponent getComponent()
 	{
 		return component;
@@ -648,7 +653,7 @@ public final class Core
 	 * Retrieves object list based on the given XPath query (asynchronously).
 	 * @param context the context.
 	 * @param xpathQuery the XPath query to execute.
-	 * @param amount maximum number of objects to retrieve. 
+	 * @param amount maximum number of objects to retrieve. If amount is 0, all objects will be retrieved.
 	 * @param offset index of first object to retrieve.
 	 * @param sort sorting of returned objects when retrieved from the database (e.g. <"Name", "ASC">, <"Age", "DESC">).
 	 * @param depth	indicates the level until which each reference (IMendixIdentifier) is also retrieved as an IMendixObject.
@@ -663,7 +668,7 @@ public final class Core
 	 * Retrieves object list based on the given XPath query (synchronously).
 	 * @param context the context.
 	 * @param xpathQuery the XPath query to execute.
-	 * @param amount maximum number of objects to retrieve. 
+	 * @param amount maximum number of objects to retrieve. If amount is 0, all objects will be retrieved.
 	 * @param offset index of first object to retrieve.
 	 * @param sort sorting of returned objects when retrieved from the database (e.g. <"Name", "ASC">, <"Age", "DESC">).
 	 * @param depth	indicates the level until which each reference (IMendixIdentifier) is also retrieved as an IMendixObject.
@@ -678,7 +683,7 @@ public final class Core
 	 * Retrieves raw data (IDataTables) based on the given XPath query (synchronously).
 	 * @param context the context.
 	 * @param xpathQuery the XPath query to execute.
-	 * @param amount maximum number of objects to retrieve. 
+	 * @param amount maximum number of objects to retrieve. If amount is 0, all objects will be retrieved.
 	 * @param offset index of first object to retrieve.
 	 * @param sort sorting of returned objects when retrieved from the database (e.g. <"Name", "ASC">, <"Age", "DESC">).
 	 * @param depth	indicates the level until which each reference (IMendixIdentifier) is also retrieved as an IMendixObject.
@@ -733,7 +738,7 @@ public final class Core
 	 * Retrieves object list based on the given XPath query (synchronously).
 	 * @param context the context.
 	 * @param xpathQuery the XPath query to execute.
-	 * @param amount maximum number of objects to retrieve. 
+	 * @param amount maximum number of objects to retrieve. If amount is 0, all objects will be retrieved.
 	 * @param offset index of first object to retrieve.
 	 * @param sort sorting of returned objects when retrieved from the database (e.g. <"Name", "ASC">, <"Age", "DESC">).
 	 * @return the list of retrieved objects.
@@ -770,7 +775,7 @@ public final class Core
 	 * Retrieves object list based on the given XPath query (synchronously).
 	 * @param context the context.
 	 * @param xpathFormat the XPath query to execute with %s for each param to escape.
-	 * @param amount maximum number of objects to retrieve. 
+	 * @param amount maximum number of objects to retrieve. If amount is 0, all objects will be retrieved.
 	 * @param offset index of first object to retrieve.
 	 * @param sort sorting of returned objects when retrieved from the database (e.g. <"Name", "ASC">, <"Age", "DESC">).
 	 * @param depth depth of the retrieval (0 is all attributes and association guids, 1 is also all attributes of 1-deep associations and 2-deep associaton guids etc.).
@@ -888,7 +893,7 @@ public final class Core
 	 * Retrieve raw data (IDataTable) using an OQL query (asynchronously).
 	 * @param context the context.
 	 * @param oqlQuery the OQL query to execute.
-	 * @param amount maximum number of objects to retrieve. 
+	 * @param amount maximum number of objects to retrieve. If amount is 0, all objects will be retrieved.
 	 * @param offset index of first object to retrieve.
 	 * @return the Future object.
 	 */
@@ -923,7 +928,7 @@ public final class Core
 	 * Retrieve raw data (IDataTable) using an OQL query (asynchronously).
 	 * @param context the context.
 	 * @param oqlQuery the OQL query to execute.
-	 * @param amount maximum number of objects to retrieve. 
+	 * @param amount maximum number of objects to retrieve. If amount is 0, all objects will be retrieved.
 	 * @param offset index of first object to retrieve.
 	 * @return the data table containing the raw data.
 	 */
@@ -1324,32 +1329,63 @@ public final class Core
 	}
 
 	/**
-	 * Import an xml stream, map this stream to domain objects and store those object in the Mendix database.
+	 * Import an XML stream, map this stream to domain model objects and store those objects in the Mendix database.
 	 * @param context the context.
-	 * @param xmlStream the xml stream to map and store.
-	 * @param importMappingName name of the mapping from xml to domain objects (as defined in the Mendix Modeler, e.g. "Orders.MyMapping").
+	 * @param xmlStream the XML stream to map and store.
+	 * @param importMappingName name of the mapping document, containing the mapping from XML to domain model objects (as defined in the Mendix Modeler, e.g. "Orders.MyMapping").
 	 * @param mappingParameter parameter object used during the mapping (optional)
-	 * @param shouldValidate whether the xml should be validated.
+	 * @param shouldValidate whether the XML should be validated.
+	 * @deprecated Please use importStream instead.
 	 */
+	@Deprecated   
 	public static void importXmlStream(IContext context, InputStream xmlStream, String importMappingName, IMendixObject mappingParameter, boolean shouldValidate)
 	{
-		integration.importXmlStream(context, xmlStream, importMappingName, mappingParameter, shouldValidate);
+		integration.importStream(context, xmlStream, importMappingName, mappingParameter, -1, shouldValidate);
 	}
 
 	/**
-	 * Import an xml stream, map this stream to domain objects and store those object in the Mendix database.
+	 * Import an XML stream, map this stream to domain model objects and store those objects in the Mendix database.
 	 * @param context the context.
-	 * @param xmlStream the xml stream to map and store.
-	 * @param importMappingName name of the mapping from xml to domain objects (as defined in the Mendix Modeler, e.g. "Orders.MyMapping").
+	 * @param xmlStream the XML stream to map and store.
+	 * @param importMappingName name of the mapping document, containing the mapping from XML to domain model objects (as defined in the Mendix Modeler, e.g. "Orders.MyMapping").
 	 * @param mappingParameter parameter object used during the mapping (optional)
-	 * @param storeResultInVariable whether to store the result of the xml mapping in variable which will be returned by this method.
-	 * @param hasListReturnValue indicates whether the return value of the xml mapping is of type List.
-	 * @param shouldValidate whether the xml should be validated.
+	 * @param storeResultInVariable whether to store the result of the XML mapping in variable which will be returned by this method.
+	 * @param hasListReturnValue indicates whether the return value of the XML mapping is of type List.
+	 * @param shouldValidate whether the XML should be validated.
+	 * @deprecated Please use importStream instead.
 	 */
+	@Deprecated   
 	public static Object importXmlStream(IContext context, InputStream xmlStream, String importMappingName, IMendixObject mappingParameter,
 			boolean storeResultInVariable, boolean hasListReturnValue, boolean shouldValidate)
 	{
 		return integration.importXmlStream(context, xmlStream, importMappingName, mappingParameter, storeResultInVariable, -1, hasListReturnValue, shouldValidate);
+	}
+
+	/**
+	 * Import an XML or JSON stream, map this stream to domain model objects and store those objects in the Mendix database.
+	 * @param context the context.
+	 * @param stream the stream to map and store.
+	 * @param importMappingName name of the mapping document, containing the mapping from XML or JSON to domain model objects (as defined in the Mendix Modeler, e.g. "Orders.MyMapping").
+	 * @param mappingParameter parameter object used during the mapping (optional).
+	 * @param shouldValidate whether the input should be validated. Validation can only be applied to XML.
+	 * @throws MendixRuntimeException this exception is thrown when an error occurs.
+	 */
+	public static List<IMendixObject> importStream(IContext context, InputStream stream, String importMappingName, IMendixObject mappingParameter, boolean shouldValidate)
+	{
+		return integration.importStream(context, stream, importMappingName, mappingParameter, -1, shouldValidate);
+	}
+
+	/**
+	 * Export domain object as XML or JSON stream.
+	 * @param context the context.
+	 * @param exportMappingName name of the mapping document, containing the mapping from domain model objects to XML or JSON (as defined in the Mendix Modeler, e.g. "Orders.MyMapping").
+	 * @param objectToExport object to export using the mapping.
+	 * @param shouldValidate whether the output should be validated. Validation can only be applied to XML.
+	 * @throws MendixRuntimeException this exception is thrown when an error occurs.
+	 */
+	public static InputStream exportStream(IContext context, String exportMappingName, IMendixObject objectToExport, boolean shouldValidate)
+	{
+		return integration.exportStream(context, exportMappingName, objectToExport, shouldValidate);
 	}
 	
 	/**

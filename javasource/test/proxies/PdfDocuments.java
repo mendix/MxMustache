@@ -4,9 +4,6 @@
 
 package test.proxies;
 
-/**
- * 
- */
 public class PdfDocuments extends system.proxies.FileDocument
 {
 	/**
@@ -87,7 +84,7 @@ public class PdfDocuments extends system.proxies.FileDocument
 	/**
 	 * @return value of htmlSource
 	 */
-	public final String gethtmlSource()
+	public final java.lang.String gethtmlSource()
 	{
 		return gethtmlSource(getContext());
 	}
@@ -96,16 +93,16 @@ public class PdfDocuments extends system.proxies.FileDocument
 	 * @param context
 	 * @return value of htmlSource
 	 */
-	public final String gethtmlSource(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String gethtmlSource(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.htmlSource.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.htmlSource.toString());
 	}
 
 	/**
 	 * Set value of htmlSource
 	 * @param htmlsource
 	 */
-	public final void sethtmlSource(String htmlsource)
+	public final void sethtmlSource(java.lang.String htmlsource)
 	{
 		sethtmlSource(getContext(), htmlsource);
 	}
@@ -115,7 +112,7 @@ public class PdfDocuments extends system.proxies.FileDocument
 	 * @param context
 	 * @param htmlsource
 	 */
-	public final void sethtmlSource(com.mendix.systemwideinterfaces.core.IContext context, String htmlsource)
+	public final void sethtmlSource(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String htmlsource)
 	{
 		getMendixObject().setValue(context, MemberNames.htmlSource.toString(), htmlsource);
 	}
