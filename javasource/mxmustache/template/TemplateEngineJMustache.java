@@ -20,12 +20,12 @@ public class TemplateEngineJMustache {
     public static final String UTF8 = "UTF-8";
 
     public String execute(String template, Object data) throws IOException {
-        logger.info("template: " + template);
-        logger.info("templateData: " + data);
+        logger.debug("template: " + template);
+        logger.debug("templateData: " + data);
         Template tmpl = Mustache.compiler().
                 withFormatter(new Mustache.Formatter() {
                     public String format(Object value) {
-                        logger.info("formatting object typed: " + value.getClass().getName());
+                        logger.debug("formatting object typed: " + value.getClass().getName());
                         if (value instanceof Date) {
                             return _fmt.format((Date) value);
                         } else if (value instanceof BigDecimal) {
@@ -36,7 +36,7 @@ public class TemplateEngineJMustache {
                     }
 
                     public String format(Object value, String specifier) {
-                        logger.info("formatting object typed: " + value.getClass().getName() + ", specifier: " + specifier);
+                        logger.debug("formatting object typed: " + value.getClass().getName() + ", specifier: " + specifier);
                         if (value instanceof Date) {
                             DateFormat _fmt = new SimpleDateFormat(specifier);
                             return _fmt.format((Date) value);

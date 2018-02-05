@@ -19,16 +19,16 @@ import mxmustache.template.TemplateEngineJMustache;
 
 public class FillTemplate extends CustomJavaAction<java.lang.String>
 {
-	private java.lang.String Template;
-	private IMendixObject Data;
-	private java.lang.Long NoObjectLevels;
+	private java.lang.String template;
+	private IMendixObject data;
+	private java.lang.Long noObjectLevels;
 
-	public FillTemplate(IContext context, java.lang.String Template, IMendixObject Data, java.lang.Long NoObjectLevels)
+	public FillTemplate(IContext context, java.lang.String template, IMendixObject data, java.lang.Long noObjectLevels)
 	{
 		super(context);
-		this.Template = Template;
-		this.Data = Data;
-		this.NoObjectLevels = NoObjectLevels;
+		this.template = template;
+		this.data = data;
+		this.noObjectLevels = noObjectLevels;
 	}
 
 	@Override
@@ -36,11 +36,11 @@ public class FillTemplate extends CustomJavaAction<java.lang.String>
 	{
 		// BEGIN USER CODE
         ILogNode logger = Core.getLogger(FillTemplate.class.getName());
-        logger.info("executeAction: " + this.Data + ", " + this.Template);
+        logger.debug("executeAction: " + this.data + ", " + this.template);
         TemplateEngineJMustache te = new TemplateEngineJMustache();
-        Object o = MxObjectToHashmapConverter.writeMxObjectToHashMap(this.getContext(), this.Data, NoObjectLevels.intValue());
-        logger.info("data: " + o);
-        String result = te.execute(this.Template, o);
+        Object o = MxObjectToHashmapConverter.writeMxObjectToHashMap(this.getContext(), this.data, noObjectLevels.intValue());
+        logger.debug("data: " + o);
+        String result = te.execute(this.template, o);
         return result;
 		// END USER CODE
 	}
